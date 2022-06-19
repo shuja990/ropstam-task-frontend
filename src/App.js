@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ProductScreen from "./screens/ProductScreen";
+import HomeScreen from "./screens/HomeScreen";
+import Header from "./components/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ProductCreateScreen from "./screens/ProductCreateScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import CategoriesScreen from "./screens/Categories";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/*" element={<HomeScreen />} exact />
+        <Route path="/login" element={<LoginScreen />} exact />
+        <Route path="/register" element={<RegisterScreen />} exact />
+        <Route path="/addcar" element={<ProductCreateScreen />} exact />
+        <Route path="/product/:id" element={<ProductScreen />} exact />
+        <Route path="/product/edit/:id" element={<ProductEditScreen />} exact />
+        <Route path="/search/:keyword" element={<HomeScreen />} exact />
+        <Route path="/page/:pageNumber" element={<HomeScreen />} exact />
+        <Route path="/admin/categories" element={<CategoriesScreen />} exact />
+
+      </Routes>
+    </>
   );
 }
 
